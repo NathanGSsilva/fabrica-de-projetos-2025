@@ -3,7 +3,6 @@ from django.core.paginator import Paginator
 import requests
 import os
 
-# 🔑 Coloque sua API key aqui ou configure via .env
 API_KEY = os.getenv("NEWS_API_KEY", "78f7169812b042e2a4d41f1065b4d6ed")
 BASE_URL = "https://newsapi.org/v2/top-headlines"
 
@@ -16,9 +15,11 @@ def contato(request):
     """Página de contato simples."""
     return render(request, "homepage/contato.html")
 
+
 def faq(request):
     """Página de perguntas frequentes."""
     return render(request, "homepage/faq.html")
+
 
 def sobrenos(request):
     """Página sobre nós."""
@@ -31,7 +32,6 @@ def filtragem(request):
     data = request.GET.get("data", "")
     pesquisa = request.GET.get("pesquisa", "")
 
-    # Decide qual endpoint usar
     endpoint = (
         "https://newsapi.org/v2/top-headlines"
         if not pesquisa
@@ -44,17 +44,14 @@ def filtragem(request):
         "language": "pt",
     }
 
-    # Se for pesquisa livre
     if pesquisa:
         params["q"] = pesquisa
         params["sortBy"] = "publishedAt"
     else:
-        # Se for só categoria
         params["country"] = "br"
         if categoria:
             params["category"] = categoria
 
-    # Se o usuário filtrou por data (aplica só no modo "everything")
     if data:
         params["from"] = data
 

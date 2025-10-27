@@ -1,8 +1,5 @@
-{% extends 'homepage/base.html' %}
-{% load static %}
-{% block title %}Início | InfoTrack{% endblock %}
-
-{% block content %}
+{% extends 'homepage/base.html' %} {% load static %} {% block title %}Início |
+InfoTrack{% endblock %} {% block content %}
 
 <!-- ===== BANNER PRINCIPAL ===== -->
 <section class="banner-home fade-in">
@@ -16,12 +13,12 @@
       <div class="inputs-busca">
         <select name="categoria">
           <option value="">Todas as categorias</option>
-          <option value="business">💼 Negócios</option>
-          <option value="entertainment">🎬 Entretenimento</option>
-          <option value="health">💊 Saúde</option>
-          <option value="science">🔬 Ciência</option>
-          <option value="sports">⚽ Esportes</option>
-          <option value="technology">🧠 Tecnologia</option>
+          <option value="business">Negócios</option>
+          <option value="entertainment">Entretenimento</option>
+          <option value="health">Saúde</option>
+          <option value="science">Ciência</option>
+          <option value="sports">Esportes</option>
+          <option value="technology">Tecnologia</option>
         </select>
 
         <input
@@ -43,19 +40,19 @@
     <h2>Últimos Destaques</h2>
     <div class="cards-destaque">
       <article class="card">
-        <img src="{% static 'homepage/img/noticia1.webp' %}" alt="Tecnologia" />
+        <img src="{% static 'homepage/img/noticia1.png' %}" alt="Tecnologia" />
         <h3>Avanços em inteligência artificial impactam o mercado global</h3>
         <a href="{% url 'filtragem' %}?categoria=technology">Ler mais</a>
       </article>
 
       <article class="card">
-        <img src="{% static 'homepage/img/noticia2.webp' %}" alt="Economia" />
+        <img src="{% static 'homepage/img/noticia2.png' %}" alt="Economia" />
         <h3>Mercado financeiro fecha em alta após anúncio do Banco Central</h3>
         <a href="{% url 'filtragem' %}?categoria=business">Ler mais</a>
       </article>
 
       <article class="card">
-        <img src="{% static 'homepage/img/noticia3.webp' %}" alt="Saúde" />
+        <img src="{% static 'homepage/img/noticia3.png' %}" alt="Saúde" />
         <h3>
           Novas descobertas médicas prometem revolução no tratamento genético
         </h3>

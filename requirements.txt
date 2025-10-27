@@ -1,0 +1,8 @@
+#repositorio https://github.com/NathanGSsilva/fabrica-de-projetos-2025
+#comando pra instalar o os requisitos pip freeze > requirements.txt
+
+Django==5.2.6
+requests==2.32.3
+python-dotenv==1.0.1
+dj-database-url==2.3.0
+whitenoise==6.7.0

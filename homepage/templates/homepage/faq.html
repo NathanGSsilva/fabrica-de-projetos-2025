@@ -1,47 +1,52 @@
-{% extends 'homepage/base.html' %}
-{% load static %}
+{% extends 'homepage/base.html' %} {% load static %} {% block title %}FAQ |
+InfoTrack{% endblock %} {% block content %}
+<section class="faq-page fade-in">
+  <div class="container">
+    <h1>Perguntas Frequentes</h1>
+    <p class="subtitulo">
+      Tire suas dúvidas sobre o funcionamento do InfoTrack e nossos serviços.
+    </p>
 
-{% block title %}FAQ | InfoTrack{% endblock %}
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3><i class="fa-solid fa-newspaper"></i> O que é o InfoTrack?</h3>
+        <p>
+          O InfoTrack é um portal que reúne notícias atualizadas em tempo real
+          com base na <strong>NewsAPI</strong>, permitindo que você filtre por
+          categoria e palavra-chave.
+        </p>
+      </div>
 
-{% block content %}
-<section class="faq-page fade-in container">
-  <h1>Perguntas Frequentes</h1>
-  <p>Encontre respostas rápidas sobre o InfoTrack e nossos serviços.</p>
+      <div class="faq-item">
+        <h3>
+          <i class="fa-solid fa-rotate"></i> As notícias são atualizadas
+          automaticamente?
+        </h3>
+        <p>
+          Sim! As notícias são puxadas diretamente da API toda vez que você faz
+          uma pesquisa, garantindo conteúdo novo e confiável.
+        </p>
+      </div>
 
-  <div class="faq-grid">
-    <div class="faq-item">
-      <div class="faq-question">Como posso receber notícias atualizadas?</div>
-      <div class="faq-answer">Basta acessar a página de filtragem e escolher a categoria ou palavra-chave de interesse. Você verá as notícias mais recentes do Brasil e do mundo.</div>
+      <div class="faq-item">
+        <h3>
+          <i class="fa-solid fa-calendar-day"></i> Posso buscar notícias
+          antigas?
+        </h3>
+        <p>
+          Sim. Basta informar uma data no campo de filtragem para visualizar as
+          notícias publicadas naquele período.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3><i class="fa-solid fa-envelope"></i> Como entro em contato?</h3>
+        <p>
+          Você pode enviar uma mensagem diretamente pela página de
+          <a href="{% url 'contato' %}">contato</a> ou por nossas redes sociais.
+        </p>
+      </div>
     </div>
-
-    <div class="faq-item">
-      <div class="faq-question">O InfoTrack é gratuito?</div>
-      <div class="faq-answer">Sim! Nosso portal é totalmente gratuito e aberto ao público. Nenhum cadastro é necessário para ler as notícias.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">Com que frequência o conteúdo é atualizado?</div>
-      <div class="faq-answer">As notícias são atualizadas várias vezes ao dia, diretamente de fontes verificadas.</div>
-    </div>
-  </div>
-
-  <div class="faq-form">
-    <h3>Não encontrou sua resposta?</h3>
-    <form method="post" action="">
-      {% csrf_token %}
-      <input type="email" name="email" placeholder="Seu e-mail" required>
-      <textarea name="mensagem" placeholder="Digite sua dúvida..." required></textarea>
-      <button type="submit">Enviar Pergunta</button>
-    </form>
   </div>
 </section>
-
-<script>
-  // interatividade simples para expandir FAQ
-  document.querySelectorAll('.faq-question').forEach(q => {
-    q.addEventListener('click', () => {
-      q.nextElementSibling.classList.toggle('visible');
-    });
-  });
-</script>
 {% endblock %}
