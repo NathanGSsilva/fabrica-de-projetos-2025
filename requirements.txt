@@ -1,5 +1,6 @@
 #repositorio https://github.com/NathanGSsilva/fabrica-de-projetos-2025
 #comando pra instalar o os requisitos pip freeze > requirements.txt
+#depois rodar o comando (python3, py, ou python) manage.py runserver  
 
 Django==5.2.6
 requests==2.32.3
