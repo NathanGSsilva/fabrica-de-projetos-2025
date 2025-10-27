@@ -1,0 +1,80 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block title %}Início | InfoTrack{% endblock %}
+
+{% block content %}
+
+<!-- ===== BANNER PRINCIPAL ===== -->
+<section class="banner-home fade-in">
+  <div class="container texto-banner">
+    <h1>Bem-vindo ao <span>InfoTrack</span></h1>
+    <p>
+      O portal que conecta você às principais notícias do Brasil e do mundo.
+    </p>
+
+    <form method="get" action="{% url 'filtragem' %}" class="form-busca">
+      <div class="inputs-busca">
+        <select name="categoria">
+          <option value="">Todas as categorias</option>
+          <option value="business">💼 Negócios</option>
+          <option value="entertainment">🎬 Entretenimento</option>
+          <option value="health">💊 Saúde</option>
+          <option value="science">🔬 Ciência</option>
+          <option value="sports">⚽ Esportes</option>
+          <option value="technology">🧠 Tecnologia</option>
+        </select>
+
+        <input
+          type="search"
+          name="pesquisa"
+          placeholder="Buscar palavra-chave..."
+        />
+      </div>
+      <button type="submit" class="botao-buscar">
+        <i class="fa-solid fa-magnifying-glass"></i> Buscar Notícias
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO DESTAQUES ===== -->
+<section class="destaques fade-in">
+  <div class="container">
+    <h2>Últimos Destaques</h2>
+    <div class="cards-destaque">
+      <article class="card">
+        <img src="{% static 'homepage/img/noticia1.webp' %}" alt="Tecnologia" />
+        <h3>Avanços em inteligência artificial impactam o mercado global</h3>
+        <a href="{% url 'filtragem' %}?categoria=technology">Ler mais</a>
+      </article>
+
+      <article class="card">
+        <img src="{% static 'homepage/img/noticia2.webp' %}" alt="Economia" />
+        <h3>Mercado financeiro fecha em alta após anúncio do Banco Central</h3>
+        <a href="{% url 'filtragem' %}?categoria=business">Ler mais</a>
+      </article>
+
+      <article class="card">
+        <img src="{% static 'homepage/img/noticia3.webp' %}" alt="Saúde" />
+        <h3>
+          Novas descobertas médicas prometem revolução no tratamento genético
+        </h3>
+        <a href="{% url 'filtragem' %}?categoria=health">Ler mais</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE A PLATAFORMA ===== -->
+<section class="sobre-nos fade-in" style="background: #fff; padding: 60px 0">
+  <div class="container">
+    <h2>Sobre o InfoTrack</h2>
+    <p class="intro">
+      O <strong>InfoTrack</strong> nasceu com a missão de entregar informação de
+      qualidade, de forma rápida e acessível. Acreditamos que conhecimento é
+      poder, e que o jornalismo confiável transforma a sociedade.
+    </p>
+  </div>
+</section>
+
+{% endblock %}

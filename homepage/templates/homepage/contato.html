@@ -1,0 +1,39 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block title %}Contato | InfoTrack{% endblock %}
+
+{% block content %}
+<section class="contato-page fade-in container">
+  <h1>Entre em Contato</h1>
+  <p>Fale conosco! Envie sua mensagem ou conheça nossos horários de atendimento.</p>
+
+  <div class="contato-grid">
+    <div class="contato-info">
+      <h3>Horário de Funcionamento</h3>
+      <ul>
+        <li>Segunda a Sexta: 9h00 às 18h00</li>
+        <li>Sábado: 8h00 às 17h00</li>
+        <li>Domingo: Fechado</li>
+      </ul>
+
+      <h3>Fale Conosco</h3>
+      <ul>
+        <li><a href="http://wa.me/551499999999"><i class="fa-brands fa-whatsapp"></i> (14) 9999-9999</a></li>
+        <li><a href="mailto:infotrack@gmail.com"><i class="fa-solid fa-envelope"></i> infotrack@gmail.com</a></li>
+      </ul>
+    </div>
+
+    <div class="contato-form">
+      <h3>Envie sua Mensagem</h3>
+      <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="nome" placeholder="Seu nome completo" required>
+        <input type="email" name="email" placeholder="Seu e-mail" required>
+        <textarea name="mensagem" rows="5" placeholder="Digite sua mensagem..." required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

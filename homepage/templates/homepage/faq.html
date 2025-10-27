@@ -1,0 +1,47 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block title %}FAQ | InfoTrack{% endblock %}
+
+{% block content %}
+<section class="faq-page fade-in container">
+  <h1>Perguntas Frequentes</h1>
+  <p>Encontre respostas rápidas sobre o InfoTrack e nossos serviços.</p>
+
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-question">Como posso receber notícias atualizadas?</div>
+      <div class="faq-answer">Basta acessar a página de filtragem e escolher a categoria ou palavra-chave de interesse. Você verá as notícias mais recentes do Brasil e do mundo.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">O InfoTrack é gratuito?</div>
+      <div class="faq-answer">Sim! Nosso portal é totalmente gratuito e aberto ao público. Nenhum cadastro é necessário para ler as notícias.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Com que frequência o conteúdo é atualizado?</div>
+      <div class="faq-answer">As notícias são atualizadas várias vezes ao dia, diretamente de fontes verificadas.</div>
+    </div>
+  </div>
+
+  <div class="faq-form">
+    <h3>Não encontrou sua resposta?</h3>
+    <form method="post" action="">
+      {% csrf_token %}
+      <input type="email" name="email" placeholder="Seu e-mail" required>
+      <textarea name="mensagem" placeholder="Digite sua dúvida..." required></textarea>
+      <button type="submit">Enviar Pergunta</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  // interatividade simples para expandir FAQ
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      q.nextElementSibling.classList.toggle('visible');
+    });
+  });
+</script>
+{% endblock %}

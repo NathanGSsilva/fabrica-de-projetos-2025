@@ -1,0 +1,92 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block title %}Busca de Notícias | InfoTrack{% endblock %}
+
+{% block content %}
+
+<section class="banner-home fade-in" style="padding: 50px 0; border-bottom: 1px solid #eee;">
+  <div class="container texto-banner">
+    <h1>Busque Notícias</h1>
+    <p>Encontre as últimas atualizações em diversas categorias</p>
+
+    <form method="get" action="" class="form-busca">
+      <div class="inputs-busca">
+        <select name="categoria">
+          <option value="">Todas as categorias</option>
+          <option value="business" {% if categoria == "business" %}selected{% endif %}>💼 Negócios</option>
+          <option value="entertainment" {% if categoria == "entertainment" %}selected{% endif %}>🎬 Entretenimento</option>
+          <option value="health" {% if categoria == "health" %}selected{% endif %}>💊 Saúde</option>
+          <option value="science" {% if categoria == "science" %}selected{% endif %}>🔬 Ciência</option>
+          <option value="sports" {% if categoria == "sports" %}selected{% endif %}>⚽ Esportes</option>
+          <option value="technology" {% if categoria == "technology" %}selected{% endif %}>🧠 Tecnologia</option>
+        </select>
+
+        <input
+          type="date"
+          name="data"
+          value="{{ data_noticia }}"
+          style="flex: 0.7"
+        />
+
+        <input
+          type="search"
+          name="pesquisa"
+          placeholder="Buscar palavra-chave..."
+          value="{{ pesquisa }}"
+        />
+      </div>
+      <button type="submit" class="botao-buscar">
+        <i class="fa-solid fa-magnifying-glass"></i> Filtrar Notícias
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== RESULTADOS ===== -->
+<section class="destaques fade-in">
+  <div class="container">
+    {% if page_obj.object_list %}
+      <h2>Foram encontradas {{ total_noticias }} notícias</h2>
+      <div class="cards-destaque">
+        {% for n in page_obj %}
+          <article class="card">
+            {% if n.urlToImage %}
+              <img src="{{ n.urlToImage }}" alt="Imagem da notícia">
+            {% else %}
+              <img src="{% static 'homepage/img/noticia1.webp' %}" alt="Imagem padrão">
+            {% endif %}
+            <h3>{{ n.title|truncatechars:120 }}</h3>
+            <p style="padding: 0 15px; font-size: 0.9rem; color: #555;">
+              {{ n.description|default:"Sem descrição disponível."|truncatechars:150 }}
+            </p>
+            <p style="padding: 0 15px; font-size: 0.8rem; color: #999;">
+              <small><strong>{{ n.source.name }}</strong> — {{ n.publishedAt|date:"d/m/Y H:i" }}</small>
+            </p>
+            <a href="{{ n.url }}" target="_blank">Ler mais</a>
+          </article>
+        {% endfor %}
+      </div>
+
+      <!-- PAGINAÇÃO -->
+      <div class="paginacao" style="text-align:center; margin-top:40px;">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}&categoria={{ categoria }}&pesquisa={{ pesquisa }}&data={{ data_noticia }}" class="botao-buscar" style="padding:8px 18px;">← Anterior</a>
+        {% endif %}
+
+        <span style="margin: 0 10px;">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}&categoria={{ categoria }}&pesquisa={{ pesquisa }}&data={{ data_noticia }}" class="botao-buscar" style="padding:8px 18px;">Próxima →</a>
+        {% endif %}
+      </div>
+
+    {% else %}
+      <p style="text-align:center; font-size:1.2rem; color:#666; margin-top:50px;">
+        Nenhuma notícia encontrada. Tente mudar os filtros ou buscar outro termo 🔍
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}
