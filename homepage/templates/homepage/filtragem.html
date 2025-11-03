@@ -10,25 +10,32 @@
     <h1>Busque Notícias</h1>
     <p>Encontre as últimas atualizações em diversas categorias</p>
 
-    <form method="get" action="" class="form-busca">
+    <form method="get" action="{% url 'filtragem' %}" class="form-busca">
       <div class="inputs-busca">
         <select name="categoria">
           <option value="">Todas as categorias</option>
-          <option value="business" {% if categoria == "business" %}selected{% endif %}>💼 Negócios</option>
-          <option value="entertainment" {% if categoria == "entertainment" %}selected{% endif %}>🎬 Entretenimento</option>
-          <option value="health" {% if categoria == "health" %}selected{% endif %}>💊 Saúde</option>
-          <option value="science" {% if categoria == "science" %}selected{% endif %}>🔬 Ciência</option>
-          <option value="sports" {% if categoria == "sports" %}selected{% endif %}>⚽ Esportes</option>
-          <option value="technology" {% if categoria == "technology" %}selected{% endif %}>🧠 Tecnologia</option>
+          <option value="business" {% if categoria == "business" %}selected{% endif %}>Negócios</option>
+          <option value="entertainment" {% if categoria == "entertainment" %}selected{% endif %}>Entretenimento</option>
+          <option value="health" {% if categoria == "health" %}selected{% endif %}>Saúde</option>
+          <option value="science" {% if categoria == "science" %}selected{% endif %}>Ciência</option>
+          <option value="sports" {% if categoria == "sports" %}selected{% endif %}>Esportes</option>
+          <option value="technology" {% if categoria == "technology" %}selected{% endif %}>Tecnologia</option>
         </select>
 
         <input
-          type="date"
-          name="data"
-          value="{{ data_noticia }}"
-          style="flex: 0.7"
+        type="date"
+        name="data_inicio"
+        value="{{ data_inicio }}"
+        style="flex: 0.7"
         />
 
+        <input
+          type="date"
+          name="data_fim"
+          value="{{ data_fim }}"
+          style="flex: 0.7"
+        />
+      
         <input
           type="search"
           name="pesquisa"

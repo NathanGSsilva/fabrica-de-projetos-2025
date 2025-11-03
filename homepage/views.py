@@ -3,10 +3,6 @@ from django.core.paginator import Paginator
 import requests
 import os
 
-API_KEY = os.getenv("NEWS_API_KEY", "78f7169812b042e2a4d41f1065b4d6ed")
-BASE_URL = "https://newsapi.org/v2/top-headlines"
-
-
 def index(request):
     return render(request, "homepage/index.html")
 
@@ -26,10 +22,14 @@ def sobrenos(request):
     return render(request, "homepage/sobrenos.html")
 
 
+API_KEY = os.getenv("NEWS_API_KEY", "78f7169812b042e2a4d41f1065b4d6ed")
+BASE_URL = "https://newsapi.org/v2/top-headlines"
+
 def filtragem(request):
-    """Filtra notícias pela API externa com paginação e busca."""
+
     categoria = request.GET.get("categoria", "")
-    data = request.GET.get("data", "")
+    data_inicio = request.GET.get("data_inicio", "")
+    data_fim = request.GET.get("data_fim", "")
     pesquisa = request.GET.get("pesquisa", "")
 
     endpoint = (
@@ -40,7 +40,7 @@ def filtragem(request):
 
     params = {
         "apiKey": API_KEY,
-        "pageSize": 50,
+        "pageSize": 100,
         "language": "pt",
     }
 
@@ -52,24 +52,28 @@ def filtragem(request):
         if categoria:
             params["category"] = categoria
 
-    if data:
-        params["from"] = data
+    if data_inicio:
+        params["from"] = data_inicio
+    if data_fim:
+        params["to"] = data_fim
 
+    
     response = requests.get(endpoint, params=params)
     data_json = response.json()
 
-    # Se der erro na API, evita travar o site
     articles = data_json.get("articles", []) if data_json.get("status") == "ok" else []
-
-    paginator = Paginator(articles, 10)
+    print(data_json)
+    paginator = Paginator(articles, 20)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
     context = {
         "page_obj": page_obj,
         "categoria": categoria,
-        "data_noticia": data,
+        "data_inicio": data_inicio,
+        "data_fim": data_fim,
         "pesquisa": pesquisa,
         "total_noticias": paginator.count,
     }
     return render(request, "homepage/filtragem.html", context)
+
