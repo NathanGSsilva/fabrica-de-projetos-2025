@@ -25,21 +25,21 @@ Python 3 / Django 5 / HTML5 / CSS3 / JavaScript / Bootstrap 5 / API externa (New
 
 👩‍💻 Equipe de Desenvolvimento – UNIMAR
 
-Júlia Lombardi	(14) 99806-4771
+Júlia Lombardi
 
-João Pedro	(14) 98173-3340
+João Pedro
 
-Nathan Gabriel	(14) 99878-7236
+Nathan Gabriel
 
-Ivan Luiz	(14) 99609-6549
+Ivan Luiz
 
-Lucas de Azevedo	(14) 98825-6065
+Lucas de Azevedo
 
-Tainá Alves	(14) 99826-0594
+Tainá Alves
 
-Samuel Alves	(14) 99853-5057
+Samuel Alves
 
-Cawe	(14) 92000-9023
+Cawe
 
 
 💡 Objetivo do Projeto:
