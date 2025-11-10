@@ -7,19 +7,20 @@ O sistema oferece uma interface moderna, intuitiva e responsiva, permitindo a bu
 📰 Principais Funcionalidades:
 
 🔍 Busca inteligente de notícias por palavra-chave
+
 🗓️ Filtragem por data e categoria
+
 🌐 Integração com API externa (NewsAPI)
+
 📱 Design responsivo e intuitivo
+
 ⚡ Paginação dinâmica e carregamento otimizado
+
 
 
 🧩 Tecnologias Utilizadas:
 
-Python 3 / Django 5
-HTML5 / CSS3 / JavaScript
-Bootstrap 5
-API externa (NewsAPI.org)
-Padrão MVC (Model-View-Controller)
+Python 3 / Django 5 / HTML5 / CSS3 / JavaScript / Bootstrap 5 / API externa (NewsAPI.org) / Padrão MVC (Model-View-Controller)
 
 
 👩‍💻 Equipe de Desenvolvimento – UNIMAR
@@ -41,7 +42,8 @@ Samuel Alves	(14) 99853-5057
 Cawe	(14) 92000-9023
 
 
-💡 Objetivo do Projeto
+💡 Objetivo do Projeto:
+
 
 O InfoTrack foi desenvolvido como parte de um projeto acadêmico da UNIMAR, com o objetivo de aplicar os conhecimentos de desenvolvimento web, consumo de APIs REST e estruturação de sistemas Django.
 O sistema visa demonstrar o potencial de integração entre dados públicos e interfaces modernas, incentivando a curiosidade e a pesquisa tecnológica dos alunos.
