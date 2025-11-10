@@ -1,4 +1,3 @@
-from queue import Empty
 from django.shortcuts import render
 from django.core.paginator import Paginator
 import requests
@@ -41,29 +40,34 @@ def filtragem(request):
 
     params = {
         "apiKey": API_KEY,
-        'language': 'pt',
+        "language": "pt",
         "pageSize": 50,
     }
 
     if pesquisa:
-
-        params["qInTitle"] = pesquisa
+        
+        params["qInTitle"] = pesquisa 
         params["sortBy"] = "relevancy"
         params["searchIn"] = "title,description,content"  # campos usados
+        
         params["excludeDomains"] = "youtube.com,facebook.com,globo.com"
+    else:
+        params["country"] = "br"
+        if categoria:
+            params["category"] = categoria
 
+    
     if data_inicio:
         params["from"] = data_inicio
-
     if data_fim:
         params["to"] = data_fim
 
+    
     response = requests.get(endpoint, params=params)
-    print(requests.get(endpoint, params).url)
-
     data_json = response.json()
     articles = data_json.get("articles", []) if data_json.get("status") == "ok" else []
 
+   
     paginator = Paginator(articles, 20)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)

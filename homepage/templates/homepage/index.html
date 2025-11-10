@@ -1,7 +1,6 @@
 {% extends 'homepage/base.html' %} {% load static %} {% block title %}Início |
 InfoTrack{% endblock %} {% block content %}
 
-<!-- ===== BANNER PRINCIPAL ===== -->
 <section class="banner-home fade-in">
   <div class="container texto-banner">
     <h1>Bem-vindo ao <span>InfoTrack</span></h1>
@@ -11,15 +10,6 @@ InfoTrack{% endblock %} {% block content %}
 
     <form method="get" action="{% url 'filtragem' %}" class="form-busca">
       <div class="inputs-busca">
-        <select name="categoria">
-          <option value="">Todas as categorias</option>
-          <option value="business">Negócios</option>
-          <option value="entertainment">Entretenimento</option>
-          <option value="health">Saúde</option>
-          <option value="science">Ciência</option>
-          <option value="sports">Esportes</option>
-          <option value="technology">Tecnologia</option>
-        </select>
         <input
           type="search"
           name="pesquisa"
@@ -33,6 +23,7 @@ InfoTrack{% endblock %} {% block content %}
     </form>
   </div>
 </section>
+
 
 <!-- ===== SEÇÃO DESTAQUES ===== -->
 <section class="destaques fade-in">

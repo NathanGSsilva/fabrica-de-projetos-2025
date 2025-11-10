@@ -40,6 +40,8 @@
           </a>
         </div>
 
+        
+
         <nav class="menu">
           <ul>
             <li>
@@ -51,8 +53,8 @@
             </li>
             <li>
               <a
-                href="{% url 'filtragem' %}"
-                class="{% if 'filtragem' in request.path %}ativo{% endif %}"
+                href="{% url 'index' %}"
+                class="{% if request.path == '/' %}ativo{% endif %}"
                 >Notícias</a
               >
             </li>
