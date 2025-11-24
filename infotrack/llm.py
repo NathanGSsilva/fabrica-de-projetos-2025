@@ -14,7 +14,7 @@ from reportlab.lib.enums import TA_JUSTIFY
 # Configurações
 # -------------------------
 
-newsapi = NewsApiClient(api_key='78f7169812b042e2a4d41f1065b4d6ed')
+newsapi = NewsApiClient(api_key='')
 
 hoje = datetime.utcnow()
 uma_semana_atras = hoje - timedelta(days=7)
@@ -119,3 +119,4 @@ for p in paragrafos:
 doc.build(elements)
 
 print(f"PDF gerado: {pdf_nome}")
+
